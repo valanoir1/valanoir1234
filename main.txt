@@ -1,0 +1,1057 @@
+node -v
+npx create-react-app nameofapp --use-npm
+cd folder
+npm start
+
+Steps:
+1.	Through Replit, You can directly execute the code.
+2.	Through Notepad
+a.	Install XAMPP Server, Start Apache in the XAMPP control panel
+b.	Save both the files (AjaxExample.html, surprise.html) under C/ xampp/htdocs
+c.	Once typed the code, In browser,in URL Type  localhost/AjaxExample.html.
+
+AJAX BIRTHDAY labsheet 9
+
+AjaxExample.html:
+<html>
+<head>
+<title> Ajax Example </title>
+<style>
+body {
+font-family: Helvetica;
+text-align: center;
+}
+#birthday-greeting {
+font-size: 72px;
+color: red;
+text-transform: uppercase;
+}
+</style>
+<script>
+var myRequest = new XMLHttpRequest();
+myRequest.onreadystatechange = function () { 
+if (myRequest.readyState === 4) {
+document.getElementById('ajax-content').innerHTML = myRequest.responseText;
+}
+};
+function sendTheAJAX() {
+myRequest.open('GET', 'surprise.html');
+myRequest.send();
+document.getElementById('reveal').style.display = 'none';
+}
+</script>
+</head>
+<body>
+<h1>Today's your special day!</h1>
+<button id="reveal" onclick="sendTheAJAX()" class="button">Why's that?</button>
+<div id="ajax-content">
+</div>
+</body>
+</html>
+Surprise.html:
+<html>
+<head>
+</head>
+<body>
+<h1 id="birthday-greeting">It's your birthday!</h1>
+</body>
+</html>
+
+*****************************************************
+RSVP presidency university (labsheet 8)
+
+Main.html
+<html>
+ <head><title>Registration Form Validation</title></head>
+ <body bgcolor="#E4F0F8">
+ <script type='text/javascript'>
+ function formValidator()
+ {
+ // Make quick references to our fields
+ var firstname = document.getElementById('firstname');
+ var lastname = document.getElementById('lastname');
+ var email = document.getElementById('email');
+ var pass = document.getElementById('pass');
+ var addr = document.getElementById('addr');
+ var mobileno = document.getElementById('mobileno');
+ // Check each input in the order that it appears in the form!
+ if(notEmpty(firstname, "first name can not be empty")){
+ if(isAlphabet(firstname, "Please enter only letters for your Firstname")){
+ if(lengthRestriction(firstname, 6)){
+ if(isAlphabet(lastname, "Please enter only letters for your Lastname")){
+ if(emailValidator(email, "Please enter a valid email address")){
+ if(lengthRestriction(pass, 6)){
+ if(isAlphanumeric(pass, "please enter Numbers and Letters Only for password")){
+ if(notEmpty(addr, "please enter the address")){
+ if(isNumeric(mobileno, "Please enter a valid mobileno")){
+ if(lengthRestriction1(mobileno, 10 , 10)){
+ return true;
+ } } } }
+ }
+ }
+ }
+ } } }
+ return false;
+ }
+function notEmpty(elem, helperMsg){ 
+if(elem.value.length == 0){
+ alert(helperMsg);
+ elem.focus(); // set the focus to this input
+ return false;
+ }
+ return true;
+ }
+function isNumeric(elem, helperMsg){
+ var numericExpression = /^[0-9]+$/;
+ if(elem.value.match(numericExpression)){
+ return true;
+ }else{
+ alert(helperMsg);
+ elem.focus();
+ return false;
+ }
+ }
+function isAlphabet(elem, helperMsg){
+ var alphaExp = /^[a-zA-Z]+$/;
+ if(elem.value.match(alphaExp)){
+ return true;
+ }else{
+ alert(helperMsg);
+ elem.focus();
+ return false;
+ }
+ }
+function isAlphanumeric(elem, helperMsg){
+ var alphaExp = /^[0-9a-zA-Z]+$/;
+ if(elem.value.match(alphaExp)){
+ return true;
+ }else{
+ alert(helperMsg);
+ elem.focus();
+ return false;
+ }
+ }
+function lengthRestriction(elem, min){
+ var uInput = elem.value;
+ if(uInput.length >= min){
+ return true;
+ }else{
+ alert("Please enter minimum " +min+ " characters");
+ elem.focus();
+ return false;
+ }
+ }
+function emailValidator(elem, helperMsg) 
+{
+var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+ if(elem.value.match(emailExp))
+ {
+ return true;
+ }
+ else{
+ alert(helperMsg);
+ elem.focus();
+ return false;
+ }
+ }
+function lengthRestriction1(elem, min, max)
+ {
+ var uInput = elem.value;
+ if(uInput.length >= min && uInput.length <= max)
+ {
+ return true;
+ }
+ else {
+ alert("Please enter 10 numbers only");
+ elem.focus();
+ return false;
+ }
+ }
+ </script>
+<center ><font color="blue" size="6" face="arial">Student Registration Form REVA UNIVERSITY</font><br /><br /><br />
+
+<form onsubmit='return formValidator()' action="right.html">
+<fieldset>
+ First Name(Minimum 6 characters)<font color="red">* </font>
+ <input type='text' id='firstname' /><br /><br />
+ Last Name<font color="red"><font color="red">* </font> </font> &nbsp;&nbsp;&nbsp;
+ <input type='text' id='lastname' /><br /><br />
+ Email Address<font color="red">* </font> &nbsp;&nbsp;&nbsp;
+ <input type='text' id='email' /><br />
+ <font color="red">(one e-mail id only):</font> &nbsp;&nbsp;&nbsp;
+ <font color="redblue">e.g. smith@gmail.com</font><br /><br/>
+ Password(minimum 6 characters)<font color="red">* </font> &nbsp;&nbsp;&nbsp;
+ <input type='password' id='pass'><br /><br/>
+ Address<font color="red">* </font> &nbsp;&nbsp;&nbsp;
+ <textarea rows="2" cols="20" id='addr' /></textarea> <br /> <br/>
+ Mobile No<font color="red">* </font> &nbsp;&nbsp;&nbsp;
+ <input type='text' id='mobileno' /><br /><br /><br />
+ Gender: <input type='radio' name="gender">male
+ <input type='radio' name="gender">female<br/><br />
+ <input type='Submit' value='submit' />
+ <input type='Reset' value='reset' />
+<fielset>
+ </center>
+
+ </form>
+ </body>
+</html>
+
+Right.html
+<html>
+<body style="background-color:green;">
+<h1> Registration done successfully </h1>
+</body>
+</html>
+
+***********************************************************************
+ANGULAR JS PALNETS labsheet 12
+
+<!DOCTYPE html>
+<html ng-app="planetApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Planets in the Solar System</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="planetController">
+ <div class="container">
+   <h1>Planets in the Solar System</h1>
+    <div class="row">
+   <div class="col-md-3">
+ <input type="text" ng-model="searchTerm" class="form-control" placeholder="Search Planets...">
+      </div>
+      <div class="col-md-3">
+        <select class="form-control" ng-model="sortBy" ng-init="sortBy='name'">
+          <option value="name">Name</option>
+          <option value="type">Type</option>
+          <option value="distance">Distance</option>
+          <option value="moons">Number of Moons</option>
+        </select>
+      </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Distance (AU)</th>
+          <th>Number of Moons</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="planet in planets | filter:searchTerm | orderBy:sortBy">
+          <td>{{ planet.name }}</td>
+          <td>{{ planet.type }}</td>
+          <td>{{ planet.distance }}</td>
+          <td>{{ planet.moons }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
+---------------------------------------------------------------------------------------------------------------
+Code:app.js
+angular.module('planetApp', [])
+  .controller('planetController', function($scope) {
+    $scope.planets = [
+      { name: 'Mercury', type: 'Terrestrial', distance: 0.39, moons: 0 },
+      { name: 'Venus', type: 'Terrestrial', distance: 0.72, moons: 0 },
+      { name: 'Earth', type: 'Terrestrial', distance: 1.00, moons: 1 },
+      { name: 'Mars', type: 'Terrestrial', distance: 1.52, moons: 2 },
+      { name: 'Jupiter', type: 'Gas Giant', distance: 5.20, moons: 79 },
+      { name: 'Saturn', type: 'Gas Giant', distance: 9.58, moons: 82 },
+      { name: 'Uranus', type: 'Ice Giant', distance: 19.18, moons: 27 },
+      { name: 'Neptune', type: 'Ice Giant', distance: 30.07, moons: 14 }
+    ];
+  });
+**************************************************
+
+FADE IN FADE OUT updated
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fading Effects Demo</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .fade-element {
+      display: none;
+      width: 80px;
+      height: 80px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      $('#btn1').click(function() {
+        $('.fade-element').fadeIn(parseInt($('#speed-input').val()) || 400, $('#easing-select').val());
+      });
+
+      $('#btn2').click(function() {
+        $('.fade-element').fadeOut(parseInt($('#speed-input').val()) || 400, $('#easing-select').val());
+      });
+
+      $('#btn3').click(function() {
+        $('.fade-element').fadeToggle(parseInt($('#speed-input').val()) || 400, $('#easing-select').val());
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Fading Effects Demo</h1>
+
+  <p>
+    <button id="btn1">Fade In</button>
+    <button id="btn2">Fade Out</button>
+    <button id="btn3">Fade Toggle</button>
+  </p>
+
+  <p>
+    <label for="speed-input">Speed:</label>
+    <input type="text" id="speed-input" placeholder="Speed in milliseconds" />
+  </p>
+
+  <p>
+    <label for="easing-select">Easing:</label>
+    <select id="easing-select">
+      <option value="swing">Swing</option>
+      <option value="linear">Linear</option>
+    </select>
+  </p>
+
+  <div id="div1" class="fade-element" style="background-color: red;"></div><br>
+  <div id="div2" class="fade-element" style="background-color: green;"></div><br>
+  <div id="div3" class="fade-element" style="background-color: blue;"></div>
+
+</body>
+</html>
+
+*************************
+
+fade in fade out normal labsheet 10
+
+<html>
+    <head>
+        <script src="jquery-3.6.3.js">	</script>
+          <script type="text/javascript"     src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script >
+		$(document).ready(function()
+		{
+			$('#btn1').click(function()
+			{
+				$('#div1').fadeIn(2000);
+				$('#div2').fadeIn(4000);
+				$('#div3').fadeIn(6000);
+			})
+			$('#btn2').click(function()
+			{
+				$('#div1').fadeOut(2000);
+				$('#div2').fadeOut(4000);
+				$('#div3').fadeOut(6000);
+			})
+			$('#btn3').click(function()
+			{
+				$('#div1').fadeToggle(2000);	
+				$('#div2').fadeToggle(4000);
+				$('#div3').fadeToggle(6000);
+			})
+			
+		})
+	</script>
+        </head>
+	<body>
+		<p>fade with different parameters.</p>
+		<button id="btn1">Fade In </button>
+		<button id="btn2">Fade Out </button>
+		<button id="btn3">Fade Toggle </button>
+		
+		<div id="div1" style="width:80px;height:80px;background-color:red;"></div><br>
+		<div id="div2" style="width:80px;height:80px;background-color:green;"></div><br>
+		<div id="div3" style="width:80px;height:80px;background-color:blue;"></div>
+	</body>
+</html>
+********************************************
+
+labsheet 13
+REACT JS 1st simple page
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Program 1</title>
+<script
+src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script
+src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+function MyApp() {
+return (
+<div>
+<h1>Spin up a simple component to learn how to use react</h1>
+<h2>My First React JS Program</h2>
+</div>
+);
+}
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
+root.render(<MyApp />);
+</script>
+</body>
+</html>
+
+REACT JS 2nd button 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Program 2</title>
+<script
+src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script
+src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<h1>Learn how to include one component in another</h1>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+function MyButton(props) {
+return <button>I'm a button. {props.text}</button>;
+}
+function MyInput(props) {
+return <input onChange={() => props.setText(event.target.value)} />;
+}
+function MyApp() {
+const [text, setText] = useState("");
+return (
+<div>
+<h2>Welcome to my application</h2>
+<h3>Type some content in the Textarea</h3>
+<MyButton text={text} />
+<MyInput setText={setText} />
+</div>
+);
+}
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
+root.render(<MyApp />);
+</script>
+</body>
+</html>
+
+REACT JS 3rd image
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Program 3</title>
+<script
+src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script
+src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+.avatar {
+border-radius: 50%;
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const user = {
+name: "A. P. J. Abdul Kalam",
+imageUrl:
+"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/A._P._J._Abdul_Kal
+am.jpg/800px-A._P._J._Abdul_Kalam.jpg",
+imageSize: 250,
+};
+function MyApp() {
+return (
+<>
+<h1>{user.name}</h1>
+<img
+className="avatar"
+src={user.imageUrl}
+alt={"Photo of " + user.name}
+style={{
+width: user.imageSize,
+height: user.imageSize,
+}}
+/>
+</>
+);
+}
+const container = document.getElementById("root");
+const root = ReactDOM.createRoot(container);
+root.render(<MyApp />);
+</script>
+</body>
+</html>
+
+REACT JS 4th calci
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Program 4</title>
+<script
+src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script
+src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+function Calculator() {
+const [firstNumber, setFirstNumber] = useState(0);
+const [secondNumber, setSecondNumber] = useState(0);
+const [result, setResult] = useState(0);
+return (
+<>
+<h1>Calculator</h1>
+<input type='number' value={firstNumber} onChange={(e) =>
+setFirstNumber(parseInt(e.target.value))} />
+<input type='number' value={secondNumber} onChange={(e) =>
+setSecondNumber(parseInt(e.target.value))} />
+<button onClick={() => setResult(firstNumber +
+secondNumber)}>Add</button>
+<button onClick={() => setResult(firstNumber -
+secondNumber)}>Subtract</button>
+<button onClick={() => setResult(firstNumber *
+secondNumber)}>Multiply</button>
+<button onClick={() => setResult(firstNumber /
+secondNumber)}>Divide</button>
+<h2>Result: {result}</h2>
+</>
+);
+}
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<Calculator />);
+</script>
+</body>
+</html>
+********************************************************
+QUESTION BANK 
+
+1)	Create a Tribute page to Dr. A.P.J. Abdul Kalam using ReactJs and apply CSS styles
+OR
+2)	Create a Tribute page of your favorite page and mention some of their achievements using ReactJs and apply CSS styles
+
+App.js
+import logo from './logo.svg';
+import './App.css';
+const user = {
+  name: "Dr. A. P. J. Abdul Kalam",
+  imageUrl:
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/A._P._J._Abdul_Kalam.jpg/800px-A._P._J._Abdul_Kalam.jpg",
+  imageSize: 250,
+  };
+  function App() {
+  return (
+  <>
+  <h1>{user.name}</h1>
+  <img
+  className="avatar"
+  src={user.imageUrl}
+  alt={"Photo of " + user.name}
+  style={{
+  width: user.imageSize,
+  height: user.imageSize,
+  }}
+  />
+ ………………write smtng about apj……………..
+  
+            <h4>For further Information visit <a href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam">this link</a>.</h4>
+                
+  </>
+  );
+  }
+export default App;
+
+
+3)	Write a program in ReactJs that asks the user to enter two numbers, obtains the two numbers from the user and outputs text that displays the sum, product, difference and quotient of the two numbers
+App.js
+import './App.css';
+import { useState } from "react";
+function App() {
+  const [firstNumber, setFirstNumber] = useState(0);
+  const [secondNumber, setSecondNumber] = useState(0);
+  const [result, setResult] = useState(0);
+  return (
+  <>
+  <h1>Calculator</h1>
+  <input type='number' value={firstNumber} onChange={(e) =>
+  setFirstNumber(parseInt(e.target.value))} />
+  <input type='number' value={secondNumber} onChange={(e) =>
+  setSecondNumber(parseInt(e.target.value))} />
+  <button onClick={() => setResult(firstNumber +
+  secondNumber)}>Add</button>
+  <button onClick={() => setResult(firstNumber -
+  secondNumber)}>Subtract</button>
+  <button onClick={() => setResult(firstNumber *
+  secondNumber)}>Multiply</button>
+  <button onClick={() => setResult(firstNumber /
+  secondNumber)}>Divide</button>
+  <h2>Result: {result}</h2>
+  </>
+  );
+ }
+export default App;
+
+4)	What are the selectors in jQuery? How many types of selectors in jQuery?
+
+In jQuery, selectors are used to target and select specific HTML elements from a web page. They provide a convenient way to manipulate and interact with elements using JavaScript. jQuery offers a variety of selectors to suit different needs. Here are some commonly used selectors in jQuery:
+
+1. Element Selector: Selects elements based on their HTML tag name. For example, `$('p')` selects all `<p>` elements.
+
+2. ID Selector: Selects elements with a specific ID attribute. For example, `$('#myElement')` selects the element with the ID "myElement".
+
+3. Class Selector: Selects elements with a specific class name. For example, `$('.myClass')` selects all elements with the class "myClass".
+
+5)	Create a web page that displays multiple elements, such as text, images or buttons, and implement functionality to apply effects that includes animated showing and hiding on the page, fading and sliding on these elements using jQuery. The user should be able to trigger the effects by clicking on designated buttons or links on the page. The effects should include hiding, showing, slide up, slide down, fade in, fade out, fade toggle, and should have customizable speed and easing options.
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#b1").click(function(){
+    $("#div1").fadeIn(1000);
+    $("#div2").fadeIn("slow");
+    $("#div3").fadeIn("3000");
+  });
+});
+$(document).ready(function(){
+  $("#btn").click(function(){
+    $("#div1").fadeOut("slow");
+    $("#div2").fadeOut("3000");
+    $("#div3").fadeOut("6000");
+
+  });
+});
+$(document).ready(function(){
+  $("#b").click(function(){
+    $("#div1").fadeToggle("slow");
+    $("#div2").fadeToggle("1000");
+    $("#div3").fadeToggle(3000);
+  });
+});
+$(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+  });
+});
+</script>
+</head>
+<body>
+<button id="hide">Hide</button>
+<button id="show">Show</button><br>
+<p>Demonstrate fadeIn() with different parameters.</p>
+<p>Demonstrate fadeToggle() with different speed parameters.</p>
+<button id="b1">Click to fade in boxes</button><br><br>
+<button id="btn">Click to fade out boxes</button><br><br>
+<button id="b">Fade toggle</button><br><br>
+<div id="div1" style="width:80px;height:100px;display:none;background-color:red;">Red</div><br>
+<div id="div2" style="width:80px;height:100px;display:none;background-color:green;">Green</div><br>
+<div id="div3" style="width:80px;height:80px;background-color:blue;">Blue</div>
+</body>
+</html>
+
+6)	Design and develop a registration page for hotel booking. Registration page should contain following fields in the specified format and develop the JavaScript validation Code as per the conditions specified for each field. 
+• Customer name (numbers not allowed, only alphabets) 
+• Number of days of stay (should be more than 0) 
+• Select AC or NON-AC (use radio type)
+ • Select room type (use checklist: single, double etc) 
+• Select your place (only alphabets should be entered)
+ • Pin code (6 digits only and it should accept only numbers) 
+• Mobile number (Phone number should contain 10 digits only and it should accept only numbers) 
+• On click submit button should display proper message in case any of the above entries are incorrect 
+• on successful entry of all the fields the student should get the alert message “Registration done successfully”.
+
+LABSHEET 8
+7)	what is meant by rendering in reactjs? explain in detail with example?
+Rendering in ReactJS refers to the process of displaying or updating the contents of the user interface based on the current state and props of the components.
+When a React component is rendered, it generates a virtual DOM (Document Object Model) which is a lightweight representation of the actual DOM. The virtual DOM is then compared to the previous version of the virtual DOM, and only the differences are updated in the actual DOM. This process is called "reconciliation" and is done in an efficient manner to minimize the number of updates required to the DOM.
+
+There are two types of rendering in React: initial rendering and re-rendering.
+8)	Explain in detail any 5 advantages of ReactJS
+Virtual DOM and Efficient Rendering: React utilizes a virtual DOM, which is a lightweight representation of the actual DOM. When changes occur in the component hierarchy or state, React compares the previous and new virtual DOMs and updates the real DOM efficiently by applying only the necessary changes. This approach minimizes DOM manipulations, resulting in faster rendering and improved performance.
+Component-Based Architecture: React follows a component-based architecture, allowing developers to break down the user interface into small, reusable components. Each component encapsulates its own logic, styles, and rendering, making the code more modular and maintainable. 
+One-Way Data Flow and Flux Architecture: React enforces a unidirectional data flow, where data changes flow from parent components to child components. This makes it easier to understand and track how data is being used and modified within the application. 
+JSX and Declarative Syntax: React uses JSX, a syntax extension that allows developers to write HTML-like code within JavaScript. JSX provides a declarative approach to defining UI components, making the code more readable and intuitive. It simplifies the process of combining UI elements with JavaScript logic and enables developers to leverage the full power of JavaScript while building UIs.
+Large Ecosystem and Community Support: React has a vast and vibrant ecosystem with numerous libraries, tools, and community support. React's popularity has led to the development of various third-party libraries and frameworks that enhance the capabilities of React applications. 
+
+9)	what are components in reactJS? explain in detail with example.
+a component is a reusable and independent piece of code that defines a part of a user interface. It can be thought of as a building block for constructing a larger application.
+There are two main types of components in ReactJS:
+•	Function Components: These are simple and stateless components that take in props (short for properties) as input and return a React element (JSX) as output. They are mainly used for rendering static content.
+•	Class Components: These are more complex and can have state and lifecycle methods. They extend the React Component class and have a render() method that returns a React element. They are used for more complex logic and interaction with the user.
+•	In addition to these main types of components, React also has a third type of component known as Higher Order Components (HOCs) which are functions that take in a component as input and return a new component with additional functionality.
+•	Overall, components are the building blocks of a ReactJS application and are used to create reusable UI elements
+
+10)	. What is Routing in AngularJS? Give an example that describes the AngularJS Routing by implementing the “when” method
+The ngRoute module helps your application to become a Single Page Application.
+If you want to navigate to different pages in your application, but you also want the application to be a SPA (Single Page Application), 
+The ngRoute module routes your application to different pages without reloading the entire application.
+Eg: 
+HTML file
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <script src="https://ajax.googleapis.com>
+  <script src="app.js"></script>
+</head>
+<body>
+  <h1>AngularJS Routing Example</h1>
+  <ul>
+    <li><a href="#/">Home</a></li>
+    <li><a href="#/about">About</a></li>
+    <li><a href="#/contact">Contact</a></li>
+  </ul>
+  <ng-view></ng-view>
+</body>
+</html>
+	JS file
+var app = angular.module('myApp', ['ngRoute']);
+
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'templates/home.html',
+      controller: 'HomeController'
+    })
+    .when('/about', {
+      templateUrl: 'templates/about.html',
+      controller: 'AboutController'
+    })
+    .when('/contact', {
+      templateUrl: 'templates/contact.html',
+      controller: 'ContactController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
+
+app.controller('HomeController', function ($scope) {
+  $scope.message = 'Welcome to the Home Page!';
+});
+
+app.controller('AboutController', function ($scope) {
+  $scope.message = 'This is the About Page.';
+});
+
+app.controller('ContactController', function ($scope) {
+  $scope.message = 'Contact us at example@example.com';
+});
+11)	. What are Filters in AngularJS? Give an example which describes the Currency, date and number Filter in AngularJS
+
+Filters can be added in AngularJS to format data.
+•	currency Format a number to a currency format.
+•	date Format a date to a specified format.
+•	filter Select a subset of items from an array.
+•	lowercase Format a string to lower case.
+•	number Format a number to a string.
+•	orderBy Orders an array by an expression.
+•	uppercase Format a string to upper case.
+Eg :
+div ng-app="myApp" ng-controller="personCtrl">
+<p>The name is {{ lastName | lowercase }}</p>
+                </div>
+12)	. What are directives in Angular? Explain briefly
+AngularJS extends HTML attributes with Directives, and binds data to HTML with Expressions.
+•	The ng-app directive initializes an AngularJS application and it defines the root element of an AngularJS, this directive will auto-bootstrap (automatically initialize) the application when a web page is loaded.
+
+13)	What is the virtual DOM in React? Explain briefly
+•	DOM treats an XML or HTML document as a tree structure in which each node is an object representing a part of the document 
+•	The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM. This process is called reconciliation.
+•	A virtual DOM object is a representation of the original DOM object. It works like a one-way data binding. Whenever any modifications happen in the web application, the entire UI is re-rendered in virtual DOM representation.
+•	Then it checks the difference between the previous DOM representation and new DOM. Once it has done, the real DOM will update only the things that have actually changed. 
+•	This makes the application faster, and there is no wastage of memory.
+14)	list out the different types of gradients and explain about linear gradient
+Gradients are widely used in various fields such as mathematics, computer science, and image processing. There are several types of gradients, including linear gradients, which I'll explain in more detail. Here are some common types of gradients:
+
+1. Linear Gradient: A linear gradient is a smooth transition between two or more colors, usually arranged along a straight line. It creates a gradient effect by blending colors from one point to another, resulting in a linear color transition. The direction and angle of the line determine the orientation of the gradient. For example, a linear gradient from left to right will transition colors horizontally.
+
+2. Radial Gradient: A radial gradient starts from a central point and radiates outward in a circular or elliptical pattern. The colors blend smoothly from the center to the surrounding area, creating a radial color transition. Radial gradients are commonly used for creating spotlight effects or simulating lighting in computer graphics.
+
+3. Angular Gradient: An angular gradient is similar to a radial gradient, but instead of radiating outward from a central point, it rotates around a center point. The color transition occurs in a circular or elliptical pattern, and the angle determines the starting and ending colors.
+
+15)	What is media query? explain with an example.
+A media query is a CSS technique used in front-end web development to apply different styles or layout rules based on specific device characteristics or viewport conditions. It allows developers to create responsive web designs that adapt and adjust based on the user's device or screen size.
+Eg: @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+16)	Design a webpage using angular js, that displays a table of at least 5 Countries with columns for country name, Capital, Currency, and number of states. The user can search for Countries using the search box, and sort the table by country name, capital, number of states using the dropdown menu. The table data should be stored in an array of objects in the controller.
+
+HTML 
+<!DOCTYPE html>
+<html ng-app="countryApp">
+
+<head>
+  <title>Country Table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body ng-controller="CountryController">
+  <h1>Country Table</h1>
+
+  <input type="text" ng-model="search" placeholder="Search Countries">
+
+  <select ng-model="sortColumn">
+    <option value="name">Sort by Name</option>
+    <option value="capital">Sort by Capital</option>
+    <option value="states">Sort by Number of States</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Country Name</th>
+        <th>Capital</th>
+        <th>Currency</th>
+        <th>Number of States</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="country in countries | filter:search | orderBy:sortColumn">
+        <td>{{ country.name }}</td>
+        <td>{{ country.capital }}</td>
+        <td>{{ country.currency }}</td>
+        <td>{{ country.states }}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
+
+App.js
+angular.module('countryApp', [])
+  .controller('CountryController', function($scope) {
+    $scope.countries = [
+      { name: 'United States', capital: 'Washington, D.C.', currency: 'USD', states: 50 },
+      { name: 'Canada', capital: 'Ottawa', currency: 'CAD', states: 10 },
+      { name: 'United Kingdom', capital: 'London', currency: 'GBP', states: 4 },
+      { name: 'Australia', capital: 'Canberra', currency: 'AUD', states: 6 },
+      { name: 'Germany', capital: 'Berlin', currency: 'EUR', states: 16 }
+    ];
+  });
+17)	Design a webpage using angular js, that displays a table of at least 5 student details with columns for student name, subject, Pre-end term marks, end term marks and Total marks. The user can search for Student details using the search box, and sort the table by student name, subject, total marks using the dropdown menu. The table data should be stored in an array of objects in the controller
+HTML
+<!DOCTYPE html>
+<html ng-app="studentApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Student Table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body ng-controller="StudentController">
+  <h1>Student Table</h1>
+
+  <input type="text" ng-model="search" placeholder="Search Students">
+
+  <select ng-model="sortColumn">
+    <option value="name">Sort by Name</option>
+    <option value="subject">Sort by Subject</option>
+    <option value="totalMarks">Sort by Total Marks</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Subject</th>
+        <th>Pre-end Term Marks</th>
+        <th>End Term Marks</th>
+        <th>Total Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="student in students | filter:search | orderBy:sortColumn">
+        <td>{{ student.name }}</td>
+        <td>{{ student.subject }}</td>
+        <td>{{ student.preEndTermMarks }}</td>
+        <td>{{ student.endTermMarks }}</td>
+        <td>{{ student.totalMarks }}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
+
+APP.JS
+angular.module('studentApp', [])
+  .controller('StudentController', function($scope) {
+    $scope.students = [
+      { name: 'John Doe', subject: 'Mathematics', preEndTermMarks: 80, endTermMarks: 90, totalMarks: 170 },
+      { name: 'Jane Smith', subject: 'Science', preEndTermMarks: 75, endTermMarks: 85, totalMarks: 160 },
+      { name: 'Mark Johnson', subject: 'English', preEndTermMarks: 70, endTermMarks: 80, totalMarks: 150 },
+      { name: 'Sarah Brown', subject: 'History', preEndTermMarks: 85, endTermMarks: 90, totalMarks: 175 },
+      { name: 'David Wilson', subject: 'Computer Science', preEndTermMarks: 90, endTermMarks: 95, totalMarks: 185 }
+    ];
+  });
+
+18)	Write a JavaScript program using AJAX code to display a birthday greeting message to the user when they click the "Why's that?" button. The response should be appearing in the same page itself.
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Greeting</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Birthday Greeting</h1>
+  <button id="greetingButton">Why's that?</button>
+  <div id="greetingMessage"></div>
+</body>
+</html>
+APP.js
+$(document).ready(function() {
+  $('#greetingButton').click(function() {
+    $.ajax({
+      url: 'birthday-greeting.php', // Replace with the actual server endpoint URL
+      type: 'GET',
+      success: function(response) {
+        $('#greetingMessage').text(response);
+      },
+      error: function() {
+        $('#greetingMessage').text('Error retrieving birthday greeting.');
+      }
+    });
+  });
+});
+
+
+
+
+
+19)	Explain the controllers in Angular JS along with syntax.
+
+In AngularJS, controllers are JavaScript functions that define the behavior and logic for a particular view or section of a web application. They are responsible for handling user interactions, managing data, and providing the necessary functions and properties to the associated view
+
+Syntax:
+angular.module('myApp', [])
+  .controller('MyController', function($scope) {
+    // Controller logic and functionality go here
+  });
+
+Eg: angular.module('myApp', [])
+  .controller('GreetingController', function($scope) {
+    $scope.message = 'Hello, AngularJS!';
+  });
+
+what is meant by rendering in reactJS explain in detail with example
+Rendering in ReactJS refers to the process of displaying or updating the contents of the user interface based on the current state and props of the components.
+When a React component is rendered, it generates a virtual DOM (Document Object Model) which is a lightweight representation of the actual DOM. The virtual DOM is then 
+compared to the previous version of the virtual DOM, and only the differences are updated in the actual DOM. This process is called "reconciliation" and is done in an efficient manner to minimize the number of updates required to the DOM
+What are AngularJS Expressions? Give 2 different example
+In AngularJS, expressions are JavaScript-like code snippets that are evaluated in the context of a specific scope. They are used to bind data and logic to the HTML templates and enable dynamic rendering of values. AngularJS expressions are typically enclosed within double curly braces { } and are evaluated to produce a value
+Eg: 
+HTML
+<div ng-app="myApp" ng-controller="MyController">
+  <h1>{{ greeting }}</h1>
+</div>
+App.js
+angular.module('myApp', [])
+  .controller('MyController', function($scope) {
+    $scope.greeting = 'Hello, AngularJS!';
+  });
+HTML 2
+<div ng-app="myApp" ng-controller="MyController">
+  <p>Result: {{ num1 + num2 }}</p>
+</div>
+App.js 2
+angular.module('myApp', [])
+  .controller('MyController', function($scope) {
+    $scope.num1 = 10;
+    $scope.num2 = 5;
+  });
+23) Develop a JavaScript code to find out the given number is even or odd use appropriate logic and take the user input using prompt?
+// Prompt the user to enter a number
+var userInput = prompt("Enter a number:");
+
+// Parse the user input as an integer
+var number = parseInt(userInput);
+
+// Check if the number is even or odd
+if (number % 2 === 0) {
+  console.log(number + " is even.");
+} else {
+  console.log(number + " is odd.");
+}
+24) Develop a JavaScript code to find out the largest among three number use appropriate logic and take the user input using prompt
+// Prompt the user to enter three numbers
+var number1 = parseFloat(prompt("Enter the first number:"));
+var number2 = parseFloat(prompt("Enter the second number:"));
+var number3 = parseFloat(prompt("Enter the third number:"));
+
+// Compare the numbers to find the largest
+var largestNumber;
+
+if (number1 >= number2 && number1 >= number3) {
+  largestNumber = number1;
+} else if (number2 >= number1 && number2 >= number3) {
+  largestNumber = number2;
+} else {
+  largestNumber = number3;
+}
+
+// Display the largest number
+console.log("The largest number is: " + largestNumber)
+
+
+
+
+
+25) Demonstrate the usage of HTML DOM concept in JavaScript along with tree structure
+ 
+•	JavaScript can change all the HTML elements in the page
+•	JavaScript can change all the HTML attributes in the page
+•	JavaScript can change all the CSS styles in the page
+•	JavaScript can remove existing HTML elements and attributes
+•	JavaScript can add new HTML elements and attributes
+•	JavaScript can react to all existing HTML events in the page
+•	JavaScript can create new HTML events in the page
+26) Explain Node.js REPL? Mention any 5 commands used in REPL, give description of the same
+•	The term REPL stands for Read Eval Print and Loop. 
+•	It specifies a computer environment like a window console or a Unix/Linux shell where you can enter the commands and the system responds with an output in an interactive mode.
+•	Read: It reads user's input, parse the input into JavaScript data-structure and stores in memory.
+•	Eval: It takes and evaluates the data structure.
+•	Print: It prints the result.
+•	Loop: It loops the above command until user press ctrl-c twice.
+COMMANDS : 
+•	ctrl + c - terminate the current command.
+•	ctrl + c twice - terminate the Node REPL.
+•	ctrl + d - terminate the Node REPL.
+•	Up/Down Keys - see command history and modify previous commands.
+•	tab Keys - list of current commands.
+27) what is meant by rendering in reactJS? Give an example of a simple React component with a render() method, explain the example in detail.
